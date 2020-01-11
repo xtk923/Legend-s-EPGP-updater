@@ -4,12 +4,12 @@ import pandas as pd
 
 guild_rank = {
     "会长" : 1,
-    "副会长" : 2, 
+    "书记" : 2, 
     "官员" : 3, 
-    "职业队长": 4,
-    "1团（EPGP）": 5,
-    "2团（EPGP）": 6,
-    "大红大紫团（G）": 7,
+    "队长": 4,
+    "一团": 5,
+    "二团": 6,
+    "三团": 7,
     "会员": 8,
     "见习": 9
 }
@@ -18,7 +18,7 @@ guild_rank = {
 
 def main():
     filename = sys.argv[1]
-    file = open(filename, "r", encoding="utf-8")
+    file = open(filename, "r")
     raw = file.readline()
     file.close()
 
