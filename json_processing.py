@@ -33,13 +33,18 @@ def main():
     df.columns = cols
 
     # remove those with zero EP
-    df = df[df['EP'] != 0]
+    for exclude in ["会员", "见习", "三团", "小黑屋"]:
+        df = df[df['会阶'] != exclude ]
 
     # sort by rank and class
     df['guild rank'] = df['会阶'].map(guild_rank)
-
     df = df.sort_values(by=['guild rank', '职业'])
     del df['guild rank']
+
+    for col in ["EP", "GP", "PR"]:
+        df[col] = list(map(lambda x :
+                           "{:.2f}".format(x), df[col]))
+
     tableLine = pd.DataFrame(
         [['---' for x in range(len(df.columns.values))]],
         columns = df.columns.values)
